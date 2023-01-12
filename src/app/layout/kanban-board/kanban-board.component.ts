@@ -18,10 +18,10 @@ export class KanbanBoardComponent implements OnInit {
       isAddCard: false,
       tasks: [
         {
-          taskName: 'Add Header',
+          taskName: 'Demo Task 1',
         },
         {
-          taskName: 'Add Footer',
+          taskName: 'Demo Task 2',
         },
       ],
       id: 1,
@@ -30,17 +30,7 @@ export class KanbanBoardComponent implements OnInit {
       taskType: 'In Progress',
       isAddCard: false,
 
-      tasks: [
-        {
-          taskName: 'Task 1 is in progress',
-        },
-        {
-          taskName: 'Task 2 is in progress',
-        },
-        {
-          taskName: 'Task 3 is in progress',
-        },
-      ],
+      tasks: [],
 
       id: 2,
     },
@@ -48,14 +38,7 @@ export class KanbanBoardComponent implements OnInit {
       taskType: 'Testing',
       isAddCard: false,
 
-      tasks: [
-        {
-          taskName: 'Task 1 is in testing',
-        },
-        {
-          taskName: 'Task 2 is in testing',
-        },
-      ],
+      tasks: [],
       id: 3,
     },
     {
