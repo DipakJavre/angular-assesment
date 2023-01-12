@@ -1,0 +1,33 @@
+<div class="kanban-board container-fluid">
+  <div class="project-name">
+    <div class="">
+      <h3>Angular Assessment Tasks</h3>
+    </div>
+  </div>
+  <div class="task-cards">
+    <div class="row">
+      <div
+        class="col-lg-3 col-md-3 col-sm-3 col-12"
+        *ngFor="let board of kanbanBoard"
+      >
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <h4>{{ board.taskType }}</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="task">
+              <p>Crete design</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="add-task cursor-pointer">
+              <p><i class="fa fa-plus"> </i> &nbsp; Add New Task</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
