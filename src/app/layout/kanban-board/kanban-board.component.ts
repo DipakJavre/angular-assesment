@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-kanban-board',
@@ -56,11 +61,7 @@ export class KanbanBoardComponent implements OnInit {
     {
       taskType: 'Completed',
       isAddCard: false,
-      tasks: [
-        {
-          taskName: 'Task 1 is in Completed',
-        },
-      ],
+      tasks: [],
       id: 4,
     },
   ];
@@ -90,5 +91,24 @@ export class KanbanBoardComponent implements OnInit {
 
   closeCard(index: number) {
     this.kanbanBoard[index].isAddCard = false;
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }
