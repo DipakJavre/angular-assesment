@@ -8,7 +8,7 @@
     <div class="row">
       <div
         class="col-lg-3 col-md-3 col-sm-3 col-12"
-        *ngFor="let board of kanbanBoard"
+        *ngFor="let board of kanbanBoard; let i = index"
       >
         <div class="card">
           <div class="card-header">
@@ -17,12 +17,32 @@
             </div>
           </div>
           <div class="card-body">
-            <div class="task">
-              <p>Crete design</p>
+            <div class="task" *ngFor="let task of board.tasks">
+              <p>{{ task.taskName }}</p>
+            </div>
+            <div class="add-new-task task" *ngIf="board.isAddCard">
+              <p>
+                <input
+                  type="text"
+                  name="taskName"
+                  [(ngModel)]="dataModel.taskName"
+                  placeholder="Enter a card title"
+                />
+              </p>
+              <button class="btn btn-sm btn-dark mt-2" (click)="saveCard(i)">
+                Add
+              </button>
+              <button
+                class="btn btn-sm btn-secondary mt-2"
+                (click)="closeCard(i)"
+              >
+                Cancel
+              </button>
             </div>
           </div>
+
           <div class="card-footer">
-            <div class="add-task cursor-pointer">
+            <div class="add-task cursor-pointer" (click)="addCard(i)">
               <p><i class="fa fa-plus"> </i> &nbsp; Add New Task</p>
             </div>
           </div>

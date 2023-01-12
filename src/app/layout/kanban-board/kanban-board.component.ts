@@ -6,29 +6,61 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./kanban-board.component.scss'],
 })
 export class KanbanBoardComponent implements OnInit {
+  dataModel: any = {};
   kanbanBoard: any[] = [
     {
       taskType: 'To Do',
+      isAddCard: false,
       tasks: [
         {
-          taskName: '',
+          taskName: 'Add Header',
+        },
+        {
+          taskName: 'Add Footer',
         },
       ],
       id: 1,
     },
     {
       taskType: 'In Progress',
-      tasks: [],
+      isAddCard: false,
+
+      tasks: [
+        {
+          taskName: 'Task 1 is in progress',
+        },
+        {
+          taskName: 'Task 2 is in progress',
+        },
+        {
+          taskName: 'Task 3 is in progress',
+        },
+      ],
+
       id: 2,
     },
     {
       taskType: 'Testing',
-      tasks: [],
+      isAddCard: false,
+
+      tasks: [
+        {
+          taskName: 'Task 1 is in testing',
+        },
+        {
+          taskName: 'Task 2 is in testing',
+        },
+      ],
       id: 3,
     },
     {
       taskType: 'Completed',
-      tasks: [],
+      isAddCard: false,
+      tasks: [
+        {
+          taskName: 'Task 1 is in Completed',
+        },
+      ],
       id: 4,
     },
   ];
@@ -36,4 +68,27 @@ export class KanbanBoardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  addCard(index: number) {
+    this.kanbanBoard.forEach((element) => {
+      element.isAddCard = false;
+    });
+    this.kanbanBoard[index].isAddCard = true;
+  }
+
+  saveCard(index: number) {
+    if (this.dataModel.taskName) {
+      this.kanbanBoard[index].tasks.push({
+        taskName: this.dataModel.taskName,
+      });
+      this.kanbanBoard[index].isAddCard = false;
+      this.dataModel.taskName = '';
+    } else {
+      alert('Task name is required');
+    }
+  }
+
+  closeCard(index: number) {
+    this.kanbanBoard[index].isAddCard = false;
+  }
 }
